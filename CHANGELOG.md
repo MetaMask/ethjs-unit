@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0]
+### Changed
+- **BREAKING**: Remove `bn.js`, `bignumber.js`, `@metamask/number-to-bn`
+- **BREAKING**: `getValueOfUnit` now returns `BigInt` instead of `BigNumber`
+- **BREAKING**: decimal numbers are not supported
+- **BREAKING**: `fromWei` now returns `BigInt` instead of `BigNumber`
+
 ## [0.3.0]
 ### Fixed
 - **BREAKING**: Update `bn.js` from `4.11.6` to `^5.2.1` ([#12](https://github.com/MetaMask/ethjs-unit/pull/12))

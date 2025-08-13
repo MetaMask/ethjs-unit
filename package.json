@@ -1,6 +1,6 @@
 {
   "name": "@metamask/ethjs-unit",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "A simple module for handling Ethereum units (e.g. 'ether', 'wei', etc...)",
   "main": "lib/index.js",
   "files": [
@@ -100,10 +100,7 @@
   "peerDependencies": {
     "@babel/runtime": "^7.0.0"
   },
-  "dependencies": {
-    "@metamask/number-to-bn": "^1.7.1",
-    "bn.js": "^5.2.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
@@ -130,7 +127,6 @@
     "@babel/plugin-transform-object-rest-spread": "^7.0.0",
     "@babel/register": "^7.0.0",
     "babel-loader": "^8.0.0",
-    "bignumber.js": "^9.1.2",
     "chai": "^4.3.10",
     "cross-env": "^6.0.3",
     "eslint": "^5.4.0",
@@ -237,7 +233,13 @@
       "arrow-body-style": [
         2,
         "as-needed"
-      ]
+      ],
+      "quotes": 0,
+      "operator-assignment": 0,
+      "operator-linebreak": 0
+    },
+    "globals": {
+      "BigInt": true
     }
   },
   "pre-commit": "build"
