@@ -1,6 +1,4 @@
 const units = require('../index.js'); // eslint-disable-line
-const BigNumber = require('bn.js'); // eslint-disable-line
-const ActualBigNumber = require('bignumber.js');
 const web3Utils = require('web3').utils; // eslint-disable-line
 const assert = require('chai').assert; // eslint-disable-line
 const totalTypes = Object.keys(units.unitMap).length;
@@ -9,7 +7,7 @@ function testRandomValueAgainstWeb3ToWei(negative) {
   const stringTestValue = `${negative ? '-' : ''}${String(Math.floor((Math.random() * 100000000000000000) + 1))}`;
   const randomunitsType = Object.keys(units.unitMap)[Math.floor((Math.random() * (totalTypes - 1)) + 1)];
   const unitsValue = units.toWei(stringTestValue, randomunitsType);
-  const web3Value = new BigNumber(web3Utils.toWei(stringTestValue, randomunitsType));
+  const web3Value = BigInt(web3Utils.toWei(stringTestValue, randomunitsType));
 
   // it(`toWei should work like web3 val ${unitsValue.toString(10)} should equal ${web3Value.toString(10)}`, () => {
   assert.deepEqual(unitsValue, web3Value);
@@ -93,12 +91,12 @@ describe('numberToString', () => {
     assert.equal(units.numberToString(-1), '-1');
     assert.equal(units.numberToString(0), '0');
     assert.equal(units.numberToString(-0), '0');
-    assert.equal(units.numberToString(new ActualBigNumber(10.1)), '10.1');
-    assert.equal(units.numberToString(new ActualBigNumber(10000)), '10000');
-    assert.equal(units.numberToString(new BigNumber(10000)), '10000');
-    assert.equal(units.numberToString(new BigNumber('-1')), '-1');
-    assert.equal(units.numberToString(new BigNumber('1')), '1');
-    assert.equal(units.numberToString(new BigNumber(0)), '0');
+    assert.equal(units.numberToString(10.1), '10.1');
+    assert.equal(units.numberToString(BigInt(10)), '10');
+    assert.equal(units.numberToString(BigInt(10000)), '10000');
+    assert.equal(units.numberToString(BigInt('-1')), '-1');
+    assert.equal(units.numberToString(BigInt('1')), '1');
+    assert.equal(units.numberToString(BigInt(0)), '0');
   });
 });
 
